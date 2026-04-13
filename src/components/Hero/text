@@ -1,0 +1,63 @@
+.hero__scratch-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+}
+.hero__scratch-layer.show { opacity: 1; }
+
+/* Top-right scratch */
+.hero__scratch-tr {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 60%;
+  height: 120%;
+  background: linear-gradient(
+    -45deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(137, 5, 5, 0.18) 36%,
+    rgba(158, 10, 10, 0.18) 37%,
+    transparent 38%,
+    transparent 48%,
+    rgba(167, 8, 8, 0.18) 49%,
+    rgba(173, 6, 6, 0.18) 50%,
+    transparent 51%,
+    transparent 62%,
+    rgba(177, 2, 2, 0.18) 63%,
+    rgba(169, 1, 1, 0.18) 64.5%,
+    transparent 65.5%
+  );
+  transform: translateX(100%);
+  transition: none; /* GSAP controlled */
+}
+
+/* Bottom-left scratch */
+.hero__scratch-bl {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 60%;
+  height: 120%;
+  background: linear-gradient(
+    -45deg,
+    transparent 0%,
+    transparent 25%,
+    rgba(255, 255, 255, 0.18) 26%,
+    rgba(255, 255, 255, 0.18) 27%,
+    transparent 28%,
+    transparent 40%,
+    rgba(245, 197, 24, 0.18) 41%,
+    rgba(245, 197, 24, 0.18) 42.5%,
+    transparent 43.5%,
+    transparent 55%,
+    rgba(255, 255, 255, 0.18) 56%,
+    rgba(255, 255, 255, 0.18) 57%,
+    transparent 58%
+  );
+  transform: translateX(-100%);
+  transition: none; /* GSAP controlled */
+}

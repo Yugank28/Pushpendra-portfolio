@@ -1,0 +1,442 @@
+/* ============================================
+   SKILLS SECTION
+   Cards + Bars + Mini Projects + Domains
+   ============================================ */
+
+.skills {
+  position: relative;
+  background: var(--black);
+  padding: 120px 60px;
+  overflow: hidden;
+}
+
+/* ============ BACKGROUND ============ */
+.skills__bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 20vw, 18rem);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* ============ SECTION TITLE ============ */
+.skills__header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skills__header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills__title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  color: var(--white);
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.skills__title span {
+  color: var(--yellow);
+}
+
+.skills__subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--grey-light);
+  letter-spacing: 0.4em;
+  margin-top: 12px;
+}
+
+/* ============ DOMAIN LABEL ============ */
+.skills__domain-label {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--grey-light);
+  letter-spacing: 0.2em;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.skills__domain-label.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.skills__domain-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--grey-mid), transparent);
+}
+
+.skills__domain-label span {
+  color: var(--yellow);
+}
+
+/* ============ DOMAIN BLOCK ============ */
+.skills__domain {
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============ TECH CARDS GRID ============ */
+.skills__tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* ============ TECH CARD ============ */
+.skills__tech-card {
+  background: var(--black-card);
+  border: 1px solid var(--grey-mid);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease,
+              border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills__tech-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Unique hover — glow + lift */
+.skills__tech-card:hover {
+  border-color: var(--yellow);
+  box-shadow: 0 8px 40px rgba(245, 197, 24, 0.15);
+  transform: translateY(-6px) !important;
+}
+
+.skills__tech-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245, 197, 24, 0.05), transparent);
+  transition: left 0.4s ease;
+}
+
+.skills__tech-card:hover::before {
+  left: 100%;
+}
+
+.skills__tech-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--white);
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.skills__tech-bar-wrap {
+  width: 100%;
+  height: 3px;
+  background: var(--grey-mid);
+  overflow: hidden;
+}
+
+.skills__tech-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--yellow-dark), var(--yellow));
+  width: 0%;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skills__tech-card.visible .skills__tech-bar {
+  width: var(--level);
+}
+
+.skills__tech-level {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--yellow);
+  text-align: right;
+  margin-top: 6px;
+  letter-spacing: 0.1em;
+}
+
+/* ============ MINI PROJECT CARDS ============ */
+.skills__mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.skills__mini-card {
+  background: var(--black-card);
+  border: 1px solid var(--grey-mid);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  height: 160px;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.skills__mini-card.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Unique hover — flip reveal */
+.skills__mini-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skills__mini-card:hover .skills__mini-card-inner {
+  transform: rotateY(180deg);
+}
+
+.skills__mini-card-front,
+.skills__mini-card-back {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.skills__mini-card-front {
+  background: var(--black-card);
+}
+
+.skills__mini-card-back {
+  background: linear-gradient(135deg, var(--black-card), rgba(245, 197, 24, 0.05));
+  border: 1px solid var(--yellow);
+  transform: rotateY(180deg);
+}
+
+.skills__mini-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--yellow);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.skills__mini-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.skills__mini-desc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--white-soft);
+  line-height: 1.6;
+}
+
+/* ============ TOOLS GRID ============ */
+.skills__tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skills__tool-chip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 8px 18px;
+  border: 1px solid var(--grey-mid);
+  color: var(--grey-light);
+  background: var(--black-card);
+  letter-spacing: 0.1em;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  cursor: default;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease,
+              color 0.3s ease, border-color 0.3s ease,
+              background 0.3s ease;
+}
+
+.skills__tool-chip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills__tool-chip:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+  background: rgba(245, 197, 24, 0.05);
+}
+
+/* ============ SOFT/HARD SKILLS ============ */
+.skills__pill-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.skills__pill-col-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--yellow);
+  letter-spacing: 0.3em;
+  margin-bottom: 16px;
+}
+
+.skills__pill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skills__pill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.skills__pill-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.skills__pill-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--yellow);
+  flex-shrink: 0;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.skills__pill-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--white-soft);
+}
+
+/* ============ DOMAIN CARDS (Freelance/Trading/Marketing) ============ */
+.skills__domain-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.skills__domain-card {
+  background: var(--black-card);
+  border: 1px solid var(--grey-mid);
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease,
+              border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills__domain-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Unique hover — slide border */
+.skills__domain-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--yellow);
+  transition: width 0.4s ease;
+}
+
+.skills__domain-card:hover::after {
+  width: 100%;
+}
+
+.skills__domain-card:hover {
+  border-color: rgba(245, 197, 24, 0.3);
+  box-shadow: 0 4px 30px rgba(245, 197, 24, 0.08);
+}
+
+.skills__dc-status {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--yellow);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.skills__dc-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--white);
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.skills__dc-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--grey-light);
+  line-height: 1.6;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .skills {
+    padding: 80px 24px;
+  }
+
+  .skills__tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills__pill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills__domain-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .skills__mini-grid {
+    grid-template-columns: 1fr;
+  }
+}

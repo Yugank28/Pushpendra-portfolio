@@ -1,0 +1,222 @@
+/* ============================================
+   GLOBAL CSS — Pushpendra K. Mishra Portfolio
+   Theme: Black + Yellow + White + Grey
+   ============================================ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+
+:root {
+  --black:       #0A0A0A;
+  --black-soft:  #111111;
+  --card-black:  #161616;
+  --grey-dark:   #1E1E1E;
+  --grey-mid:    #2E2E2E;
+  --grey-light:  #888888;
+  --white:       #F5F5F0;
+  --white-soft:  #E0DDD5;
+  --yellow:      #F5C518;
+  --yellow-bright: #FFE033;
+  --yellow-dark: #C9A000;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Rajdhani', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+}
+
+/* ============================================
+   RESET
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+}
+
+/* ============================================
+   CUSTOM CURSOR
+   ============================================ */
+
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--yellow);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--yellow);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+  opacity: 0.6;
+  mix-blend-mode: difference;
+}
+
+/* Cursor expand on hover over interactive elements */
+body:has(a:hover) .cursor,
+body:has(button:hover) .cursor {
+  width: 18px;
+  height: 18px;
+}
+
+body:has(a:hover) .cursor-ring,
+body:has(button:hover) .cursor-ring {
+  width: 52px;
+  height: 52px;
+  opacity: 0.3;
+}
+
+/* ============================================
+   NOISE GRAIN OVERLAY
+   ============================================ */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 99990;
+  opacity: 0.35;
+}
+
+/* ============================================
+   YELLOW SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yellow);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--yellow-bright);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--yellow) var(--black);
+}
+
+/* ============================================
+   ORGANIC SVG SECTION DIVIDERS
+   ============================================ */
+
+.section-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: var(--black);
+}
+
+.section-divider svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+
+::selection {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================
+   IMAGES
+   ============================================ */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.yellow { color: var(--yellow); }
+.grey   { color: var(--grey-light); }
+
+/* ============================================
+   SECTION CURVE DIVIDERS (reusable)
+   ============================================ */
+
+.curve-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: -1px;
+}
+
+.curve-divider svg {
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 50px;
+}
+
+.curve-divider--flip {
+  transform: rotate(180deg);
+}

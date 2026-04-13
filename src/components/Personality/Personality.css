@@ -1,0 +1,487 @@
+/* ============================================
+   PERSONALITY SECTION
+   ============================================ */
+
+.pers {
+  position: relative;
+  background: #0A0A0A;
+  overflow: hidden;
+}
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+
+.pers__header {
+  text-align: center;
+  padding: 120px 20px 80px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.pers__header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pers__header-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 8vw, 96px);
+  color: #F5F5F0;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.pers__header-title span {
+  color: #F5C518;
+}
+
+.pers__header-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(13px, 1.8vw, 16px);
+  color: #888888;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   OPENING SLIDE
+   ============================================ */
+
+.pers__opening {
+  min-height: 100vh;
+  background: #0A0A0A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px clamp(24px, 8vw, 160px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle yellow radial glow behind text */
+.pers__opening::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 197, 24, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.pers__opening-inner {
+  max-width: 900px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.pers__opening-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #F5C518;
+  letter-spacing: 0.4em;
+  margin-bottom: 40px;
+  opacity: 0.7;
+}
+
+/* ============================================
+   WORD FADE
+   ============================================ */
+
+.pers__wordfade {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.pers__word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 4.5vw, 58px);
+  color: #F5F5F0;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.pers__word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Opening text — larger */
+.pers__opening-text .pers__word {
+  font-size: clamp(28px, 4.5vw, 56px);
+}
+
+/* Closing text — italic white */
+.pers__closing-text .pers__word {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(20px, 3vw, 38px);
+  font-weight: 700;
+  font-style: italic;
+  color: #F5F5F0;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
+   CLOSING SLIDE
+   ============================================ */
+
+.pers__closing {
+  min-height: 100vh;
+  background: #0A0A0A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px clamp(24px, 8vw, 160px);
+  position: relative;
+  overflow: hidden;
+}
+
+.pers__closing::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #F5C518, transparent);
+  opacity: 0.3;
+}
+
+.pers__closing-inner {
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.pers__closing-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #F5C518;
+  letter-spacing: 0.4em;
+  margin-bottom: 40px;
+  opacity: 0.7;
+}
+
+/* ============================================
+   PERSONALITY SLIDE
+   ============================================ */
+
+.pers__slide {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px clamp(20px, 5vw, 80px);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pers__slide.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Decorative slide number bg text */
+.pers__slide::after {
+  content: attr(data-num);
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 200px;
+  color: rgba(245, 197, 24, 0.02);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.pers__slide-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+}
+
+/* photo-left: photo col 1, content col 2 */
+.pers__slide-inner.photo-left {
+  direction: ltr;
+}
+
+/* photo-right: content col 1, photo col 2 */
+.pers__slide-inner.photo-right {
+  direction: rtl;
+}
+
+.pers__slide-inner.photo-right > * {
+  direction: ltr;
+}
+
+/* ============================================
+   PHOTO SIDE
+   ============================================ */
+
+.pers__photo-side {
+  position: relative;
+}
+
+.pers__photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 65vh;
+}
+
+.pers__photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a00 0%, #2a2000 30%, #F5C518 60%, #c9a000 80%, #111111 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: filter 0.4s ease;
+}
+
+/* Noise texture overlay */
+.pers__photo-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.pers__photo-placeholder.blurred {
+  filter: blur(18px);
+}
+
+.pers__photo-domain {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 5vw, 56px);
+  color: rgba(10, 10, 10, 0.6);
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.pers__show-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: 1px solid #F5C518;
+  color: #F5C518;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.pers__show-btn:hover {
+  background: #F5C518;
+  color: #0A0A0A;
+}
+
+/* ============================================
+   CONTENT SIDE
+   ============================================ */
+
+.pers__content-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pers__slide-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #F5C518;
+  letter-spacing: 0.25em;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.pers__slide-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 6vw, 80px);
+  color: #F5F5F0;
+  letter-spacing: 0.05em;
+  line-height: 0.95;
+  margin-bottom: 10px;
+}
+
+.pers__slide-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(13px, 1.6vw, 16px);
+  color: #888888;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.pers__slide-desc {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: #E0DDD5;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+/* ============================================
+   IDEOLOGY CARD
+   ============================================ */
+
+.pers__ideology {
+  border: 1px solid rgba(245, 197, 24, 0.25);
+  border-left: 3px solid #F5C518;
+  padding: 18px 20px;
+  background: rgba(245, 197, 24, 0.03);
+  border-radius: 1px;
+}
+
+.pers__ideology-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: #F5C518;
+  letter-spacing: 0.35em;
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.pers__ideology-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(16px, 2vw, 22px);
+  color: #F5F5F0;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.pers__ideology-note {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(12px, 1.3vw, 14px);
+  color: #888888;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+  .pers__slide-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .pers__slide-inner.photo-right {
+    direction: ltr;
+  }
+
+  .pers__photo-wrap {
+    max-height: 45vh;
+    aspect-ratio: 4 / 3;
+  }
+
+  .pers__slide {
+    padding: 60px 24px;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .pers__header {
+    padding: 80px 20px 60px;
+  }
+
+  .pers__opening,
+  .pers__closing {
+    padding: 60px 24px;
+    min-height: 80vh;
+  }
+
+  .pers__slide-title {
+    font-size: clamp(36px, 10vw, 52px);
+  }
+}
+.pers__photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+  transition: filter 0.5s ease;
+}
+
+.pers__photo-img.blurred {
+  filter: blur(20px) grayscale(40%);
+}
+
+.pers__blur-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,10,0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 5;
+}
+
+.pers__blur-warning {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--white-soft);
+  letter-spacing: 0.12em;
+  text-align: center;
+  padding: 0 20px;
+  line-height: 1.6;
+}
+
+.pers__show-btn {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  padding: 10px 28px;
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.pers__show-btn:hover { background: var(--yellow-bright); }
